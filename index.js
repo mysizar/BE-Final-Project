@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 config();
 import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import { userRouter } from "./routes/user.route.js";
 import { mongoConnect, mongoListener } from "./config/db.connect.js";
 
@@ -9,6 +11,13 @@ await mongoConnect();
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+  })
+);
 
 // Endpoints
 app.use("/user", userRouter);

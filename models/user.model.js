@@ -13,6 +13,10 @@ const UserSchema = new Schema({
   },
   jwt: String,
   csrf: String,
+  activated: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Hook - hashed password before saving to the database
@@ -24,8 +28,8 @@ UserSchema.pre("save", async function (next) {
 });
 
 // Add methods - compare password
-UserSchema.methods.auth = async function (plainpassword) {
-  return await bcrypt.compare(plainpassword, this.password);
+UserSchema.methods.auth = async function (plainPassword) {
+  return await bcrypt.compare(plainPassword, this.password);
 };
 
 export const UserModel = model("user", UserSchema);
