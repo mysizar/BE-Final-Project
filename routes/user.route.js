@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { login, logout, register } from "../controller/user.controller.js";
+import { login, logout, register } from "../controller/user.ctrl.js";
 import checkInputs from "../lib/checkInputs.js";
-import validation from "../middlewares/user.validation.js";
-import verifyUser from "../middlewares/user.verification.js";
+import validation from "../middlewares/user/validation.mdw.js";
+import verifyUser from "../middlewares/user/verification.mdw.js";
 
 export const userRouter = Router();
 

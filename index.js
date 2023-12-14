@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { userRouter } from "./routes/user.route.js";
 import { mongoConnect, mongoListener } from "./config/db.connect.js";
+import { productRouter } from "./routes/product.route.js";
 
 mongoListener();
 await mongoConnect();
@@ -21,6 +22,7 @@ app.use(
 
 // Endpoints
 app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 // 404-Page
 app.all("*", (req, res, next) => {

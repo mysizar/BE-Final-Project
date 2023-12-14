@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-//Verbindung herstellen
+// Create connection
 export async function mongoConnect() {
   try {
     await mongoose.connect(process.env.DB_CONNECTIONSTRING, {
@@ -22,4 +22,13 @@ export function mongoListener() {
     .on("disconnected", () => {
       console.log("Database disconnected");
     });
+}
+
+// Close connection
+export async function mongoDisconnect() {
+  try {
+    await mongoose.disconnect();
+  } catch (error) {
+    console.log(error.message);
+  }
 }

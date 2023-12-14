@@ -72,7 +72,7 @@ export async function logout(req, res, next) {
       httpOnly: true,
       secure: true,
       sameSite: "Lax",
-      maxAge: 3600,
+      maxAge: 3600000, // 1 hour
     })
     .clearCookie("csrf", csrf, {
       httpOnly: true,

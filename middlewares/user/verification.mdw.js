@@ -1,7 +1,7 @@
-import errorCreator from "../lib/errorCreator.js";
-import { createCSRF } from "../lib/csrf.js";
-import { createJwt } from "../lib/jwt.js";
-import { UserModel } from "../models/user.model.js";
+import errorCreator from "../../lib/errorCreator.js";
+import { createCSRF } from "../../lib/csrf.js";
+import { createJwt } from "../../lib/jwt.js";
+import { UserModel } from "../../models/user.model.js";
 
 export default async function verifyUser(req, res, next) {
   const { email, password } = req.body;
